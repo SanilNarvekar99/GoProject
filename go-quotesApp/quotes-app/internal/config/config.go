@@ -13,13 +13,12 @@ type Config struct {
 	DBUser     string
 	DBPassword string
 	DBName     string
-	// JWTSecret  string
 }
 
 func LoadConfig() *Config {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading config: %v", err)
+	err1 := godotenv.Load()
+	if err1 != nil {
+		log.Fatalf("Error loading config: %v", err1)
 	}
 
 	return &Config{
@@ -28,6 +27,5 @@ func LoadConfig() *Config {
 		DBUser:     os.Getenv("DB_USER"),
 		DBPassword: os.Getenv("DB_PASSWORD"),
 		DBName:     os.Getenv("DB_NAME"),
-		// JWTSecret:  os.Getenv("JWT_SECRET"),
 	}
 }
